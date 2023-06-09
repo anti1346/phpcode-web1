@@ -4,7 +4,7 @@
 </head>
 <body>
     <h1>This is a test page</h1>
-    <p>Welcome to the test page of your Laravel application!</p>
+    <p>라라벨 애플리케이션의 테스트 페이지에 오신 것을 환영합니다!</p>
 </body>
 </html>
 
