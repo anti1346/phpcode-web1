@@ -21,19 +21,21 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y nginx php-fpm
+          sudo apt install -y nginx php8.2-fpm
 
       - name: Configure NGINX
         run: |
           # Copy NGINX configuration files to the appropriate location
           sudo cp .github/nginx/nginx.conf /etc/nginx/nginx.conf
           sudo cp .github/nginx/default.conf /etc/nginx/conf.d/default.conf
+          sudo cp .github/nginx/quic.sangchul.kr.conf /etc/nginx/conf.d/quic.sangchul.kr.conf
           # Restart NGINX
-          sudo service nginx restart
+          sudo systemctl restart nginx
 
       - name: Configure PHP-FPM
         run: |
           # Copy PHP-FPM configuration files to the appropriate location
-          sudo cp .github/php-fpm/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+          sudo cp .github/php-fpm/php-fpm.conf /etc/php/8.2/fpm/php-fpm.conf
+          sudo cp .github/php-fpm/www.conf /etc/php/8.2/fpm/pool.d/www.conf
           # Restart PHP-FPM
-          sudo service php7.4-fpm restart
+          sudo systemctl restart php8.2-fpm
